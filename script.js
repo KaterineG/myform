@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /*Кнопка Добавить */
     document.getElementById("addstudent").addEventListener('click', () => {
-        document.querySelector(".new-student").classList.toggle('hide');
+        document.querySelector(".students__new-student").classList.toggle('hide');
     });
 
     document.getElementById('add').addEventListener("click", () => {
@@ -89,14 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             paintTable(arr_student);
             clearform();
-            document.querySelector(".new-student").classList.add('hide');
+            document.querySelector(".students__new-student").classList.add('hide');
         }
 
 
     });
 
     function paintTable(arr) {
-        let node = document.querySelectorAll('.students-item');
+        let node = document.querySelectorAll('.students__students-item');
         node.forEach(function(item) {
             if (item) {
 
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let studentEl = document.createElement('tr');
 
-            studentEl.classList.add('students-item');
+            studentEl.classList.add('students__students-item');
             let fioEl = document.createElement('td');
             let facultetEl = document.createElement('td');
             let datebirthEl = document.createElement('td');
@@ -131,8 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let age = declOfNum(birthDateToAge(item['datebirth']), ['год', 'года', 'лет']);
 
 
-            let td = document.querySelector('.table__header');
-
+            let td = document.querySelector('.table__body');
+            console.log(td);
 
             td.appendChild(studentEl);
 
@@ -205,8 +205,8 @@ document.addEventListener("DOMContentLoaded", () => {
             let fio1 = prev.secondname + ' ' + prev.name + ' ' + prev.patronymic;
             let fio2 = next.secondname + ' ' + next.name + ' ' + next.patronymic;
 
-            if (fio1 > fio2) return -1;
-            if (fio1 < fio2) return 1;
+            if (fio1 < fio2) return -1;
+            if (fio1 > fio2) return 1;
         });
         paintTable(sortarr);
     });
@@ -229,35 +229,32 @@ document.addEventListener("DOMContentLoaded", () => {
         sortarr.sort((prev, next) => prev.yearstart - next.yearstart);
         paintTable(sortarr);
     });
-    //фильтр по фамилии
-    document.getElementById('filtersecondname').addEventListener('input', (el) => {
+    //фильтр по всем полям
+    document.querySelectorAll('.filter').forEach(function(item) {
+        item.addEventListener('input', (el) => {
+            let fsecondname = document.getElementById('filtersecondname').value;
+            let fname = document.getElementById('filtername').value;
+            let fpatronimic = document.getElementById('filterpatronymic').value;
+            let ffacultet = document.getElementById('filterfacultet').value;
+            let fyearstart = document.getElementById('filteryearstart').value;
+            let fyearend = document.getElementById('filteryearend').value;
 
-        let filterArr = arr_student.filter(function(item) {
+            let filterArr = arr_student.filter(function(item) {
 
-            return item.secondname.toUpperCase().indexOf(el.currentTarget.value.toUpperCase()) >= 0;
-        });
-        paintTable(filterArr);
-    });
-    //фильтр по имени
-    document.getElementById('filtername').addEventListener('input', (el) => {
+                return (item.secondname.toUpperCase().indexOf(fsecondname.toUpperCase()) >= 0 || fsecondname == '') &&
+                    (item.name.toUpperCase().indexOf(fname.toUpperCase()) >= 0 || fsecondname == '') &&
+                    (item.patronymic.toUpperCase().indexOf(fpatronimic.toUpperCase()) >= 0 || fpatronimic == '') &&
+                    (item.facultet.toUpperCase().indexOf(ffacultet.toUpperCase()) >= 0 || ffacultet == '') &&
+                    (item.yearstart === Number(fyearstart) || fyearstart == '') &&
+                    (item.yearstart + 4 === Number(fyearend) || fyearend == '');
+            });
+        })
 
-        let filterArr = arr_student.filter(function(item) {
 
-            return item.name.toUpperCase().indexOf(el.currentTarget.value.toUpperCase()) >= 0;
-        });
-        paintTable(filterArr);
 
-    });
-    //фильтр по отчеству
-    document.getElementById('filterpatronymic').addEventListener('input', (el) => {
-
-        let filterArr = arr_student.filter(function(item) {
-
-            return item.patronymic.toUpperCase().indexOf(el.currentTarget.value.toUpperCase()) >= 0;
-        });
-        paintTable(filterArr);
 
     });
+
     //фильтр по факультету
     document.getElementById('filterfacultet').addEventListener('input', (el) => {
 
@@ -269,7 +266,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    //фильтр по годуначала обучения
+    //фильтр по году начала обучения
 
     document.getElementById('filteryearstart').addEventListener('input', (el) => {
 
@@ -296,8 +293,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const newLocal = 'физмат';
         arr_student = [{ 'secondname': 'Иванов', 'name': 'Иван', 'patronymic': 'Иванович', 'facultet': 'физика', 'datebirth': new Date('1990-01-12'), 'yearstart': 2015 },
             { 'secondname': 'Петров', 'name': 'Тимур', 'patronymic': 'Борисович', 'facultet': 'информатика', 'datebirth': new Date('1997-02-15'), 'yearstart': 2001 },
-            { 'secondname': 'Давыдов', 'name': 'Дмитрий', 'patronymic': 'Иванович', 'facultet': 'физмат', 'datebirth': new Date('1970-01-07'), 'yearstart': 2001 }
+            { 'secondname': 'Давыдов', 'name': 'Дмитрий', 'patronymic': 'Иванович', 'facultet': 'физмат', 'datebirth': new Date('1970-01-07'), 'yearstart': 2001 },
+            { 'secondname': 'Давыдов', 'name': 'Василий', 'patronymic': 'Данилович', 'facultet': 'химия', 'datebirth': new Date('1970-01-07'), 'yearstart': 2001 },
+            { 'secondname': 'Харитонов', 'name': 'Степан', 'patronymic': 'Исаевич', 'facultet': 'физмат', 'datebirth': new Date('1970-01-07'), 'yearstart': 2001 }
+
         ];
         paintTable(arr_student);
     });
+
+    document.getElementById('cancel').addEventListener('click', function() {
+        document.querySelector(".students__new-student").classList.add('hide');
+    })
 });

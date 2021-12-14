@@ -7,81 +7,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <script src="script.js"></script>
 
     <title>Студенты</title>
 </head>
 
 <body>
-    <div class="section">
+    <section class="students">
 
         <div class="container">
             <h1>Таблица студентов</h1>
-            <div class="menu">
+            <div class="students__menu">
                 <div class="err"></div>
                 <button type="button" class="btn btn-success" id="addstudent">Добавить</button>
                 <button type="button" class="btn btn-success" id="tststudent">Тестовые даннные</button>
 
             </div>
 
-            <div class="filter">
-                <label for="filtersecondname">Фильтровать по фамилии</label>
-                <input type="text" class="form-control" id="filtersecondname" placeholder="" value=''>
-                <label for="filtername">Фильтровать по имени</label>
-                <input type="text" class="form-control" id="filtername" placeholder="" value=''>
-                <br><label for="filterpatronymic">Фильтровать по отчеству</label>
-                <input type="text" class="form-control" id="filterpatronymic" placeholder="" value=''>
-                <label for="filterfacultet">Факультет</label>
-                <input type="text" class="form-control" id="filterfacultet" placeholder="" value="">
+            <ul class="students__ilter">
+                <li class="students__item">
+                    <label for="filtersecondname">Фильтровать по фамилии</label>
+                    <input type="text" class="students__input form-control filter" id="filtersecondname" placeholder="" value=''>
+                </li>
+                <li class="students__item">
+                    <label for="filtername">Фильтровать по имени</label>
+                    <input type="text" class="students__input form-control filter" id="filtername" placeholder="" value=''>
+                </li>
+                <li class="students__item">
+                    <label for="filterpatronymic">Фильтровать по отчеству</label>
+                    <input type="text" class="students__input form-control filter" id="filterpatronymic" placeholder="" value=''>
+                </li>
+                <li class="students__item">
+                    <label for="filterfacultet">Факультет</label>
+                    <input type="text" class="students__input form-control filter" id="filterfacultet" placeholder="" value="">
+                </li>
+                <li class="students__item">
+                    <label for="filteryearstart">Фильтр по году начала обучения</label>
+                    <input type="text" class="students__input form-control filter" id="filteryearstart" placeholder="" value="">
+                </li>
+                <li class="students__item">
+                    <label for="filteryearend">Фильтр по году окончания обучения</label>
+                    <input type="text" class="students__input form-control filter" id="filteryearend" placeholder="" value="">
+                </li>
 
-                <label for="filteryearstart">Фильтр по году начала обучения</label>
-                <input type="text" class="form-control" id="filteryearstart" placeholder="" value="">
-                <label for="filteryearend">Фильтр по году окончания обучения</label>
-                <input type="text" class="form-control" id="filteryearend" placeholder="" value="">
 
-            </div>
-            <div class="new-student hide">
-                <form>
+
+            </ul>
+            <div class="students__new-student hide">
+
+
+                <form class="" method="post" action="#">
+
                     <div class="form-group">
-                        <h2>Добавление студента</h2>
-                        <label for="second-name">Фамилия</label>
-                        <input type="text" class="form-control" id="secondname" placeholder="" value=''>
-                        <label for="name">Имя</label>
-                        <input type="text" class="form-control" id="name" placeholder="" value=''>
-
-
-
-                        <label for="patronymic">Отчество</label>
-                        <input type="text" class="form-control" id="patronymic" placeholder="" value=''>
-
-                        <label for="birth">Дата рождения</label>
-                        <input type="date" class="form-control" id="birth" value=''>
-
-                        <label for="year-start">Год начала обучения</label>
-                        <input type="year-start" class="form-control" id="year-start" value=>
-
-                        <label for="facultet">Факультет</label>
-                        <input type="text" class="form-control" id="facultet" placeholder="" value="">
-
-                        <button type="button" class="btn btn-primary" id="add">Добавить студента</button>
-                        <button type="button" class="btn btn-secondary" id="cancel">Отменить</button>
+                        <label for="secondname" class="students__label cols-sm-2 control-label">Фамилия</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="secondname" id="secondname" placeholder="Введите фамилию" />
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="name" class="students__label cols-sm-2 control-label">Имя</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Введите фамилию" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="patronymic" class="students__label cols-sm-2 control-label">Отчество</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="patronymic" id="patronymic" placeholder="Введите фамилию" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="birth" class="students__label cols-sm-2 control-label">Дата рождения</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-calendar fa" aria-hidden="true"></i></span>
+                                <input type="date" class="form-control" name="email" id="birth" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year-start" class="students__label cols-sm-2 control-label">Год начала обучения</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-graduation-cap fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="username" id="year-start" placeholder="Введите год обучения" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="facultet" class="students__label cols-sm-2 control-label">Факультет</label>
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-university fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="facultet" id="facultet" placeholder="Введите факультет" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="students__action form-group">
+
+                        <button type="button" class="students__btn btn btn-primary btn-lg btn-block login-button" id="add">Добавить студента</button>
+                        <button type="button" class="students__btn btn btn-primary btn-lg btn-block login-button" id="cancel">Отменить</button>
+
+                    </div>
+
                 </form>
+
             </div>
 
-            <div class="table">
+            <div class="students__table table">
                 <table class="table__header">
-                    <tr>
-                        <td class="th" id="sortfio">ФИО студента</td>
-                        <TD class="th" id="sortfacul">Факультет</TD>
-                        <td class="th" id="sortbirth">Дата рождения и возраст</td>
-                        <td class="th" id="sortedu">Годы обучения и номер курса</td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <td class="table__header" id="sortfio">ФИО студента</td>
+                            <TD class="table__header" id="sortfacul">Факультет</TD>
+                            <td class="table__header" id="sortbirth">Дата рождения и возраст</td>
+                            <td class="table__header" id="sortedu">Годы обучения и номер курса</td>
+                        </tr>
+                    </thead>
+                    <tbody class="table__body">
+
+                    </tbody>
                 </table>
+
             </div>
         </div>
-    </div>
-    </div>
+    </section>
+
 
 </body>
 
