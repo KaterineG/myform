@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="script.js"></script>
+
+    <title>Студенты</title>
+</head>
+
+<body>
+    <div class="section">
+
+        <div class="container">
+            <h1>Таблица студентов</h1>
+            <div class="menu">
+                <div class="err"></div>
+                <button type="button" class="btn btn-success" id="addstudent">Добавить</button>
+                <button type="button" class="btn btn-success" id="tststudent">Тестовые даннные</button>
+
+            </div>
+
+            <div class="filter">
+                <label for="filtersecondname">Фильтровать по фамилии</label>
+                <input type="text" class="form-control" id="filtersecondname" placeholder="" value=''>
+                <label for="filtername">Фильтровать по имени</label>
+                <input type="text" class="form-control" id="filtername" placeholder="" value=''>
+                <br><label for="filterpatronymic">Фильтровать по отчеству</label>
+                <input type="text" class="form-control" id="filterpatronymic" placeholder="" value=''>
+                <label for="filterfacultet">Факультет</label>
+                <input type="text" class="form-control" id="filterfacultet" placeholder="" value="">
+
+                <label for="filteryearstart">Фильтр по году начала обучения</label>
+                <input type="text" class="form-control" id="filteryearstart" placeholder="" value="">
+                <label for="filteryearend">Фильтр по году окончания обучения</label>
+                <input type="text" class="form-control" id="filteryearend" placeholder="" value="">
+
+            </div>
+            <div class="new-student hide">
+                <form>
+                    <div class="form-group">
+                        <h2>Добавление студента</h2>
+                        <label for="second-name">Фамилия</label>
+                        <input type="text" class="form-control" id="secondname" placeholder="" value=''>
+                        <label for="name">Имя</label>
+                        <input type="text" class="form-control" id="name" placeholder="" value=''>
+
+
+
+                        <label for="patronymic">Отчество</label>
+                        <input type="text" class="form-control" id="patronymic" placeholder="" value=''>
+
+                        <label for="birth">Дата рождения</label>
+                        <input type="date" class="form-control" id="birth" value=''>
+
+                        <label for="year-start">Год начала обучения</label>
+                        <input type="year-start" class="form-control" id="year-start" value=>
+
+                        <label for="facultet">Факультет</label>
+                        <input type="text" class="form-control" id="facultet" placeholder="" value="">
+
+                        <button type="button" class="btn btn-primary" id="add">Добавить студента</button>
+                        <button type="button" class="btn btn-secondary" id="cancel">Отменить</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table">
+                <table class="table__header">
+                    <tr>
+                        <td class="th" id="sortfio">ФИО студента</td>
+                        <TD class="th" id="sortfacul">Факультет</TD>
+                        <td class="th" id="sortbirth">Дата рождения и возраст</td>
+                        <td class="th" id="sortedu">Годы обучения и номер курса</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
